@@ -38,7 +38,7 @@ python3 main.py (cek apakah server sudah berhasil membuka aplikasinya?)
 jika sudah lalu matikan: 'CTRL' + 'C' di keyboard pada terminal server kalian
 
 test 2x mode prod:
-gunicorn your_app:app --config gunicorn_config.py
+gunicorn your_app:app --bind 0.0.0.0
 ==================
 
 
