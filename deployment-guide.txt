@@ -1,40 +1,58 @@
 (STEP 1)
+==================
 install python 3 di server:
 
 sudo apt install python3 python3-pip python3-venv -y
 python3 --version
+==================
+
+
 
 
 (STEP 2)
+==================
 pindahin projek python / flask dari pc local ke server:
 scp -r /direktoriProjekKalian userServer@IPServer:/DirektoriAplikasiPythonDiServer
+==================
 
-install dependency (jika ada file requirements.txt), jika tidak skip aja step ini, install sendiri secara manual pake pip install nama_package:
-pip install -r requirements.txt
 
-Aktivasi virtual environment:
+
+
+(STEP 3)
+==================
+Aktivasi virtual environment & Install Dependency:
 python3 -m venv venv
 source venv/bin/activate
 
+install dependency (jika ada file requirements.txt), jika tidak skip aja step ini, install sendiri secara manual pake pip install nama_package:
+pip install -r requirements.txt
+==================
+
+
+
+
+(STEP 4)
+==================
 test 1x mode dev:
 python3 main.py (cek apakah server sudah berhasil membuka aplikasinya?)
 jika sudah lalu matikan: 'CTRL' + 'C' di keyboard pada terminal server kalian
 
 test 2x mode prod:
 gunicorn your_app:app --config gunicorn_config.py
-
-
 ==================
 
-(STEP 3)
 
+
+
+(STEP 5)
+==================
 buat file baru dengan extension file .service
 sudo nano /etc/systemd/system/namaFileService.service
 
 isi file dengan script berikut:
 
 [Unit]
-Description=Your Python Application
+Description=Nama Projeknya Apa
 After=network.target
 
 [Service]
@@ -47,14 +65,17 @@ Restart=always
 WantedBy=multi-user.target
 
 Save dengan cara pencet 'CTRL' + 'x' di keyboard, terus confirm (pencet 'y' lalu 'enter') 
-
 ==================
 
 
-(STEP 4)
+
+
+(STEP 6)
+==================
 Jalankan service yang sudah dibuat:
 
 sudo systemctl enable namaFileApp.service
 sudo systemctl start namaFileApp.service
 sudo systemctl status namaFileApp.service
+==================
 
