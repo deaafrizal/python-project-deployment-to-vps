@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FLASK Python Todolist check</title>
+  </head>
+  <body>
+    <h1>FLASK Python To-Do List</h1>
+    <form method="POST">
+      <input type="text" name="task" placeholder="Enter task" />
+      <button type="submit">Tambahkan</button>
+    </form>
+    <ul>
+      {% for i, task in enumerate(tasks) %}
+      <li>{{ task }} <a href="{{ url_for('delete', task_id=i) }}">hapus</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
